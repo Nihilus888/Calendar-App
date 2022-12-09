@@ -2,6 +2,8 @@ import React, {useContext} from 'react'
 import logo from './assets/Calendar.jpg'
 import GlobalContext from './context/GlobalContext'
 import dayjs from 'dayjs'
+import chevron_left from './assets/chevron_left.png'
+import chevron_right from './assets/chevron_right.png'
 
 export default function CalendarHeader() {
   const {monthIndex, setMonthIndex} = useContext(GlobalContext)
@@ -27,13 +29,13 @@ export default function CalendarHeader() {
 
       <button onClick={handlePrevMonth}>
         <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
-          chevron_left
+          <img src={chevron_left} alt="chevron_left" className="mr-2 w-15 h-14" />
         </span>
       </button>
 
       <button onClick={handleNextMonth}>
         <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
-          chevron_right
+        <img src={chevron_right} alt="chevron_right" className="mr-2 w-15 h-12" />
         </span>
       </button>
     <h2 className="ml-4 text-xl text-gray-500 font-bold">
