@@ -38,7 +38,7 @@ export default function SmallCalendar() {
             <img
               src={chevron_left}
               alt="chevron_left"
-              className="mr-2 w-15 h-12"
+              className="mr-2 w-10 h-10"
             />
           </span>
         </button>
@@ -48,17 +48,33 @@ export default function SmallCalendar() {
             <img
               src={chevron_right}
               alt="chevron_left"
-              className="mr-2 w-15 h-12"
+              className="mr-2 w-10 h-10"
             />
           </span>
         </button>
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
-        {currentMonth[0].map((day, i) => (
-          <span key={i} className="text-sm py-1 text-center">
-            {day.format('dd').charAt(0)}
+          <span className="text-sm py-1 text-center">
+            S
           </span>
-        ))}
+          <span className="text-sm py-1 text-center">
+            M
+          </span>
+          <span className="text-sm py-1 text-center">
+            T
+          </span>
+          <span className="text-sm py-1 text-center">
+            W
+          </span>
+          <span className="text-sm py-1 text-center">
+            T
+          </span>
+          <span className="text-sm py-1 text-center">
+            F
+          </span>
+          <span className="text-sm py-1 text-center">
+            S
+          </span>
       </div>
     </div>
   );
