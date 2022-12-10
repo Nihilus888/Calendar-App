@@ -12,7 +12,7 @@ export default function SmallCalendar() {
   const { monthIndex } = useContext(GlobalContext);
 
   useEffect(() => {
-    setCurrentMonth(getMonth(currentMonth));
+    setCurrentMonth(getMonth(currentMonthIdx));
   }, [currentMonthIdx]);
 
   useEffect(() => {
@@ -25,6 +25,18 @@ export default function SmallCalendar() {
 
   function handleNextMonth() {
     setCurrentMonthIdx(currentMonthIdx + 1);
+  }
+
+  function getDayClass(day) {
+    const format = "DD-MM-YY";
+    const nowDay = dayjs().format(format);
+    const currDay = day.format(format);
+
+    if (nowDay === currDay) {
+      return "bg-blue-500 rounded-full text-white";
+    } else {
+      return "";
+    }
   }
 
   return (
@@ -54,27 +66,24 @@ export default function SmallCalendar() {
         </button>
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
-          <span className="text-sm py-1 text-center">
-            S
+        {currentMonth[0].map((day, i) => (
+          <span key={i} className="text-sm py-1 text-center">
+            {day.format("dd").charAt(0)}
           </span>
-          <span className="text-sm py-1 text-center">
-            M
-          </span>
-          <span className="text-sm py-1 text-center">
-            T
-          </span>
-          <span className="text-sm py-1 text-center">
-            W
-          </span>
-          <span className="text-sm py-1 text-center">
-            T
-          </span>
-          <span className="text-sm py-1 text-center">
-            F
-          </span>
-          <span className="text-sm py-1 text-center">
-            S
-          </span>
+        ))}
+
+        {currentMonth.map((row, i) => (
+          <React.Fragment key={i}>
+            {row.map((day, idx) => (
+              <button
+                key={idx}
+                className={`py-1 w-full ${getDayClass(day)}`}
+              >
+                <span className="text-sm">{day.format("D")}</span>
+              </button>
+            ))}
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
