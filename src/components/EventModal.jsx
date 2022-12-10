@@ -3,7 +3,7 @@ import GlobalContext from "./context/GlobalContext";
 
 export default function EventModal() {
   const [title, setTitle] = useState("");
-  const { setShowEventModal } = useContext(GlobalContext);
+  const { setShowEventModal, daySelected } = useContext(GlobalContext);
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
@@ -28,7 +28,7 @@ export default function EventModal() {
             <span className="text-gray-400">
                 schedule
             </span>
-            <p>{}</p>
+            <p>{daySelected.format("dddd, MMMM DD")}</p>
           </div>
         </div>
       </form>
