@@ -16,9 +16,9 @@ function savedEventsReducer(state, { type, payload }) {
 }
 
 function initEvents() {
-  const storageEvents = localStorage.getItem("savedEvents")
-  const parsedEvents = storageEvents ? JSON.parse(storageEvents) : []
-  return parsedEvents
+  const storageEvents = localStorage.getItem("savedEvents");
+  const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
+  return parsedEvents;
 }
 
 export default function ContextWrapper(props) {
@@ -26,13 +26,21 @@ export default function ContextWrapper(props) {
   const [smallCalendarMonth, setSmallCalendarMonth] = useState(null);
   const [daySelected, setDaySelected] = useState(dayjs());
   const [showEventModal, setShowEventModal] = useState(false);
-  const [savedEvents, dispatchCalEvent] = useReducer(savedEventsReducer, [], initEvents);
+  const [savedEvents, dispatchCalEvent] = useReducer(
+    savedEventsReducer,
+    [],
+    initEvents
+  );
 
   useEffect(() => {
     if (smallCalendarMonth !== null) {
       setMonthIndex(smallCalendarMonth);
     }
   }, [smallCalendarMonth]);
+
+  useEffect(() => {
+    localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
+  }, [savedEvents]);
 
   return (
     <GlobalContext.Provider
@@ -45,6 +53,7 @@ export default function ContextWrapper(props) {
         setDaySelected,
         showEventModal,
         setShowEventModal,
+        dispatchCalEvent,
       }}
     >
       {props.children}

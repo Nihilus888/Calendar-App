@@ -6,7 +6,23 @@ export default function EventModal() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedLabel, setSelectedLabel] = useState(labelsClasses[0]);
-  const { setShowEventModal, daySelected } = useContext(GlobalContext);
+  const { setShowEventModal, daySelected, dispatchCalEvent } =
+    useContext(GlobalContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const calendarEvent = {
+      title,
+      description,
+      label: selectedLabel,
+      day: daySelected.valueOf(),
+      id: Date.now(),
+    };
+    console.log(calendarEvent.title)
+    dispatchCalEvent({ type: "push", payload: calendarEvent });
+    setShowEventModal(false);
+  }
+
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
@@ -72,9 +88,13 @@ export default function EventModal() {
           </div>
         </div>
         <footer className="flex justify-end border-t p-3 mt-5">
-            <button type="submit" className="bg-blue-500 hover: bg-blue-600 px-6 py-2 rounded text-white">
-                    Save
-            </button>
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="bg-blue-500 hover: bg-blue-600 px-6 py-2 rounded text-white"
+          >
+            Save
+          </button>
         </footer>
       </form>
     </div>
