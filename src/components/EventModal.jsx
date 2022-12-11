@@ -3,11 +3,14 @@ import GlobalContext from "./context/GlobalContext";
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
 export default function EventModal() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [selectedLabel, setSelectedLabel] = useState(labelsClasses[0]);
-  const { setShowEventModal, daySelected, dispatchCalEvent } =
+  const { setShowEventModal, daySelected, dispatchCalEvent, selectedEvent } =
     useContext(GlobalContext);
+  const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
+  const [description, setDescription] = useState(selectedEvent ? selectedEvent.description : "");
+  const [selectedLabel, setSelectedLabel] = useState(
+    selectedEvent ? labelsClasses.find((lbl) => lbl === selectedEvent.label) : 
+    labelsClasses[0]
+    );
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,8 +21,13 @@ export default function EventModal() {
       day: daySelected.valueOf(),
       id: Date.now(),
     };
-    console.log(calendarEvent.title)
-    dispatchCalEvent({ type: "push", payload: calendarEvent });
+    if (selectedEvent) {
+      dispatchCalEvent({ type: "update", payload: calendarEvent });
+    }
+    else {
+      dispatchCalEvent({ type: "push", payload: calendarEvent });
+    }
+    
     setShowEventModal(false);
   }
 
