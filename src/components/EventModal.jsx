@@ -71,6 +71,11 @@ export default function EventModal() {
             </div>
           </div>
         </div>
+        <footer className="flex justify-end border-t p-3 mt-5">
+            <button type="submit" className="bg-blue-500 hover: bg-blue-600 px-6 py-2 rounded text-white">
+                    Save
+            </button>
+        </footer>
       </form>
     </div>
   );
