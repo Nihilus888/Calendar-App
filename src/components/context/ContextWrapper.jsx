@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useMemo } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
@@ -33,6 +33,14 @@ export default function ContextWrapper(props) {
     [],
     initEvents
   );
+
+  const filteredEvents = useMemo(() => {
+    return savedEvents.filter(evt => labels
+      .filter(lbl => lbl.checked)
+      .map(lbl => lbl.label)
+      .includes(evt.label)
+      )
+  }, [savedEvents, labels])
 
   useEffect(() => {
     if (smallCalendarMonth !== null) {
@@ -78,6 +86,7 @@ export default function ContextWrapper(props) {
         setLabels,
         labels,
         updateLabel,
+        filteredEvents,
       }}
     >
       {props.children}
