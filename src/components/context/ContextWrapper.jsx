@@ -56,6 +56,10 @@ export default function ContextWrapper(props) {
     })
   }, [savedEvents]);
 
+  function updateLabel(label) {
+    setLabels(labels.map((lbl) => lbl.label === label.label ? label : lbl))
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -73,6 +77,7 @@ export default function ContextWrapper(props) {
         savedEvents,
         setLabels,
         labels,
+        updateLabel,
       }}
     >
       {props.children}
