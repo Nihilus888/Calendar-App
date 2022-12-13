@@ -4,12 +4,12 @@ const GlobalContext = React.createContext({
   monthIndex: 0,
   setMonthIndex: (index) => {},
   smallCalendarMonth: 0,
-  setSmallCalenarMonth: (index) => {},
+  setSmallCalendarMonth: (index) => {},
   daySelected: null,
   setDaySelected: (day) => {},
   showEventModal: false,
   setShowEventModal: () => {},
-  dispatchCalEvent: ({type, payload}) => {},
+  dispatchCalEvent: ({ type, payload }) => {},
   savedEvents: [],
   selectedEvent: null,
   setSelectedEvent: () => {},
@@ -17,6 +17,6 @@ const GlobalContext = React.createContext({
   labels: [],
   updateLabel: () => {},
   filteredEvents: [],
-})
+});
 
 export default GlobalContext;
