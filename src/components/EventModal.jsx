@@ -29,6 +29,19 @@ export default function EventModal() {
       ? labelsClasses.find((lbl) => lbl === selectedEvent.label)
       : labelsClasses[0]
   );
+  const [confirmed, setConfirmed] = useState(false)
+
+  function handleConfirmed(e) {
+    e.preventDefault()
+    console.log('Testing confirmed button')
+    setConfirmed(true)
+  }
+
+  function handleCancelled(e) {
+    e.preventDefault()
+    console.log('Testing cancelled button')
+    setConfirmed(false)
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,6 +51,7 @@ export default function EventModal() {
       label: selectedLabel,
       day: daySelected.valueOf(),
       id: selectedEvent ? selectedEvent.id : Date.now(),
+      confirmed,
     };
     if (selectedEvent) {
       dispatchCalEvent({ type: "update", payload: calendarEvent });
@@ -125,6 +139,22 @@ export default function EventModal() {
           </div>
         </div>
         <footer className="flex justify-end border-t p-3 mt-5">
+        <button
+            type="submit"
+            onClick={handleConfirmed}
+            className="bg-green-500 hover:bg-green-600 px-3 py-2 rounded text-white mr-3"
+          >
+            Confirmed
+          </button>
+
+          <button
+            type="submit"
+            onClick={handleCancelled}
+            className="bg-red-500 hover:bg-red-600 px-3 py-2 rounded text-white mr-3"
+          >
+            Cancelled
+          </button>
+
           <button
             type="submit"
             onClick={handleSubmit}
