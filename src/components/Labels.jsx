@@ -1,18 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { updateLabel } from "typescript";
 import GlobalContext from "./context/GlobalContext";
 
 export default function Labels() {
-  const { labels, updateLabel, confirmed, updateConfirmed } = useContext(GlobalContext);
+  const { labels, updateLabel } = useContext(GlobalContext);
+  const [title, setTitle] = useState('')
 
-  function confirmMeeting() {
-    let meeting = localStorage.getItem('savedEvents')
-    let confirmedMeeting = JSON.parse(meeting)
-    console.log(confirmedMeeting)
-    for (let i = 0; i < confirmedMeeting.length; i++) {
-      console.log('i', confirmedMeeting[i].confirmed)
+  useEffect(() => {
+    const meeting = JSON.parse(localStorage.getItem('savedEvents'))
+    for(let i = 0; i < meeting.length; i++) {
+      if(meeting[i].confirmed === true) {
+        console.log('meeting title', meeting[i].title)
+        setTitle(meeting[i].title)
+      }
+    }
+  }, [])
+
+function confirmedMeeting(e) {
+  let meeting = localStorage.getItem('savedEvents')
+  let confirmedMeeting = JSON.parse(meeting)
+  console.log(confirmedMeeting)
+  for (let i = 0; i < confirmedMeeting.length; i++) {
+    if (confirmedMeeting[i].confirmed === true) {
+      let meetingTitle = confirmedMeeting[i].title
+      console.log(meetingTitle)
     }
   }
+}
+
 
   return (
     <React.Fragment>
@@ -33,7 +48,7 @@ export default function Labels() {
       <p className="mt-3 mb-3">
         <input
           type="checkbox"
-          onChange={confirmMeeting}
+          onClick={confirmedMeeting}
           className={`form-checkbox h-5 w-5 text-green-400 rounded focus:ring-0 cursor-pointer`}
         />
         <span className="ml-2 text-gray-700 capitalize">Confirmed</span>
@@ -42,7 +57,6 @@ export default function Labels() {
       <p>
         <input
           type="checkbox"
-          onChange={confirmMeeting}
           className={`form-checkbox h-5 w-5 text-red-400 rounded focus:ring-0 cursor-pointer`}
         />
         <span className="ml-2 text-gray-700 capitalize">Cancelled</span>
