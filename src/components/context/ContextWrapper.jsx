@@ -29,7 +29,8 @@ export default function ContextWrapper(props) {
   const [showEventModal, setShowEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [labels, setLabels] = useState([]);
-  const [confirmed, updateConfirmed] = useState(false)
+  const [title, setTitle] = useState()
+  const [cancelled, setCancelled] = useState()
   const [savedEvents, dispatchCalEvent] = useReducer(
     savedEventsReducer,
     [],
@@ -77,6 +78,34 @@ export default function ContextWrapper(props) {
     }
   }, [showEventModal]);
 
+  useEffect(() => {
+    let array = []
+    const meeting = JSON.parse(localStorage.getItem('savedEvents'))
+    for(let i = 0; i < meeting.length; i++) {
+      if(meeting[i].confirmed === true) {
+        array.push('Meeting title: ',  meeting[i].title, ' ')
+      }
+    }
+    setTitle(array)
+  }, [])
+
+  useEffect(() => {
+    let array = []
+    const meeting = JSON.parse(localStorage.getItem('savedEvents'))
+    for(let i = 0; i < meeting.length; i++) {
+      if(meeting[i].confirmed === false) {
+        array.push('Meeting title: ', meeting[i].title, ' ')
+      }
+    }
+    setCancelled(array)
+  }, [])
+
+  function updateTitle(titles) {
+    setTitle(
+      title.map((tle) => (tle.titles === tle.titles ? titles : tle))
+    )
+  }
+
   function updateLabel(label) {
     setLabels(
       labels.map((lbl) => (lbl.label === label.label ? label : lbl))
@@ -102,8 +131,11 @@ export default function ContextWrapper(props) {
         labels,
         updateLabel,
         filteredEvents,
-        confirmed,
-        updateConfirmed,
+        title,
+        setTitle,
+        updateTitle,
+        cancelled,
+        setCancelled,
       }}
     >
       {props.children}
