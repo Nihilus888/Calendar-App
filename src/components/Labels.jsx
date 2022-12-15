@@ -3,7 +3,17 @@ import { updateLabel } from "typescript";
 import GlobalContext from "./context/GlobalContext";
 
 export default function Labels() {
-  const { labels, updateLabel } = useContext(GlobalContext);
+  const { labels, updateLabel, confirmed, updateConfirmed } = useContext(GlobalContext);
+
+  function confirmMeeting() {
+    let meeting = localStorage.getItem('savedEvents')
+    let confirmedMeeting = JSON.parse(meeting)
+    console.log(confirmedMeeting)
+    for (let i = 0; i < confirmedMeeting.length; i++) {
+      console.log('i', confirmedMeeting[i].confirmed)
+    }
+  }
+
   return (
     <React.Fragment>
       <p className="text-gray-500 font-bold mt-10">Label</p>
@@ -23,6 +33,7 @@ export default function Labels() {
       <p className="mt-3 mb-3">
         <input
           type="checkbox"
+          onChange={confirmMeeting}
           className={`form-checkbox h-5 w-5 text-green-400 rounded focus:ring-0 cursor-pointer`}
         />
         <span className="ml-2 text-gray-700 capitalize">Confirmed</span>
@@ -31,6 +42,7 @@ export default function Labels() {
       <p>
         <input
           type="checkbox"
+          onChange={confirmMeeting}
           className={`form-checkbox h-5 w-5 text-red-400 rounded focus:ring-0 cursor-pointer`}
         />
         <span className="ml-2 text-gray-700 capitalize">Cancelled</span>
