@@ -29,10 +29,10 @@ export default function Labels() {
       ))}
 
       <p className="text-gray-500 font-bold mt-10">Confirmed Meetings:</p>
-      <p className="text-black-300 mt-1">{title}</p>
+      <p className="text-green-600 mt-1 font-bold">{title}</p>
 
       <p className="text-gray-500 font-bold mt-10">Cancelled Meetings:</p>
-      <p className="text-black-300 mt-1">{cancelled}</p>
+      <p className="text-red-500 mt-1 font-bold">{cancelled}</p>
     </React.Fragment>
   );
 }

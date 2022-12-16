@@ -47,6 +47,10 @@ export default function CalendarHeader() {
           "MMMM YYYY"
         )}
       </h2>
+
+      <h2 className="ml-4 text-sl text-gray-500 font-bold">
+        Meeting room:
+      </h2>
     </header>
   );
 }

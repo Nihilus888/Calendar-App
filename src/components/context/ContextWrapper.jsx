@@ -104,6 +104,7 @@ export default function ContextWrapper(props) {
     setTitle(
       title.map((tle) => (tle.titles === tle.titles ? titles : tle))
     )
+    console.log('titles', titles)
   }
 
   function updateLabel(label) {

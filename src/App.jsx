@@ -6,6 +6,8 @@ import Sidebar from "./components/Sidebar";
 import Month from "./components/Month";
 import GlobalContext from "./components/context/GlobalContext";
 import EventModal from "./components/EventModal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [currenMonth, setCurrentMonth] = useState(getMonth());
@@ -17,6 +19,7 @@ function App() {
 
   return (
     <React.Fragment>
+      <ToastContainer />
       {showEventModal && <EventModal />}
 
       <div className="h-screen flex flex-col">

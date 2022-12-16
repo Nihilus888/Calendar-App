@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "./context/GlobalContext";
+import { toast } from "react-toastify";
 
 const labelsClasses = [
   "indigo",
@@ -34,12 +35,18 @@ export default function EventModal() {
   function handleConfirmed(e) {
     e.preventDefault()
     console.log('Testing confirmed button')
+    toast.success("Meeting Confirmed!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     setConfirmed(true)
   }
 
   function handleCancelled(e) {
     e.preventDefault()
     console.log('Testing cancelled button')
+    toast.error("Meeting Cancelled!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     setConfirmed(false)
   }
 
@@ -112,7 +119,7 @@ export default function EventModal() {
             <input
               type="text"
               name="description"
-              placeholder="Add a description"
+              placeholder="Meeting Room"
               value={description}
               required
               className="pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
