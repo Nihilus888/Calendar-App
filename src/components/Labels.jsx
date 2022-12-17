@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { updateLabel } from "typescript";
 import GlobalContext from "./context/GlobalContext";
 
@@ -7,11 +7,20 @@ export default function Labels() {
     labels,
     updateLabel,
     title,
-    setTitle,
+    // setTitle,
     cancelled,
-    setCancelled,
-    updateTitle,
+    // setCancelled,
+    // updateTitle,
   } = useContext(GlobalContext);
+
+  const meetings = [
+    'MR 6-1-1',
+    'MR 6-1-2',
+    'MR 6-1-3',
+    'DR 9-2-1',
+    'DR 9-2-3',
+    'DR 9-2-4',
+  ]
 
   return (
     <React.Fragment>
@@ -24,7 +33,7 @@ export default function Labels() {
             onChange={() => updateLabel({ label: lbl, checked: !checked })}
             className={`form-checkbox h-5 w-5 text-${lbl}-400 rounded focus:ring-0 cursor-pointer`}
           />
-          <span className="ml-2 text-gray-700 capitalize">{lbl}</span>
+          <span className="ml-2 text-gray-700 capitalize">{meetings[idx]}</span>
         </label>
       ))}
 

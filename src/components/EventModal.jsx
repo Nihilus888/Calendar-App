@@ -11,6 +11,15 @@ const labelsClasses = [
   "purple",
 ];
 
+const meetings = [
+  'MR 6-1-1',
+  'MR 6-1-2',
+  'MR 6-1-3',
+  'DR 9-2-1',
+  'DR 9-2-3',
+  'DR 9-2-4',
+]
+
 export default function EventModal() {
   const {
     setShowEventModal,
@@ -69,7 +78,7 @@ export default function EventModal() {
     setShowEventModal(false);
   }
   return (
-    <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
+    <div className="h-full w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
         <header className="bg-gray-100 px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-gray-400">
@@ -119,7 +128,7 @@ export default function EventModal() {
             <input
               type="text"
               name="description"
-              placeholder="Meeting Room"
+              placeholder="Meeting time"
               value={description}
               required
               className="pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
@@ -133,11 +142,11 @@ export default function EventModal() {
                 <span
                   key={i}
                   onClick={() => setSelectedLabel(lblClass)}
-                  className={`bg-${lblClass}-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}
+                  className={`bg-${lblClass}-500 w-11 h-11 rounded-full flex items-center justify-center cursor-pointer`}
                 >
                   {selectedLabel === lblClass && (
-                    <span className="material-icons-outlined text-white text-sm">
-                      check
+                    <span className="text-white text-xs text-center">
+                      {meetings[i]}
                     </span>
                   )}
                 </span>
