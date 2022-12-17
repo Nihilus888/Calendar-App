@@ -9,6 +9,9 @@ const labelsClasses = [
   "blue",
   "red",
   "purple",
+  "yellow",
+  "orange",
+  "zinc",
 ];
 
 const meetings = [
@@ -18,6 +21,9 @@ const meetings = [
   'DR 9-2-1',
   'DR 9-2-3',
   'DR 9-2-4',
+  'OCEANUS 6-1-4',
+  'PERSEUS',
+  'APOLLO',
 ]
 
 export default function EventModal() {
@@ -79,7 +85,7 @@ export default function EventModal() {
   }
   return (
     <div className="h-full w-full fixed left-0 top-0 flex justify-center items-center">
-      <form className="bg-white rounded-lg shadow-2xl w-1/4">
+      <form className="bg-white rounded-lg shadow-2xl w-1/2">
         <header className="bg-gray-100 px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-gray-400">
             drag_handle
@@ -107,7 +113,7 @@ export default function EventModal() {
           </div>
         </header>
         <div className="p-3">
-          <div className="grid grid-cols-1/5 items-end gap-y-7">
+          <div className="grid grid-cols-1/5 items-end gap-y-10">
             <div></div>
             <input
               type="text"
@@ -142,7 +148,7 @@ export default function EventModal() {
                 <span
                   key={i}
                   onClick={() => setSelectedLabel(lblClass)}
-                  className={`bg-${lblClass}-500 w-11 h-11 rounded-full flex items-center justify-center cursor-pointer`}
+                  className={`bg-${lblClass}-500 w-14 h-14 flex items-center justify-center cursor-pointer`}
                 >
                   {selectedLabel === lblClass && (
                     <span className="text-white text-xs text-center">
