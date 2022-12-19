@@ -29,7 +29,7 @@ export default function ContextWrapper(props) {
   const [showEventModal, setShowEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [labels, setLabels] = useState([]);
-  const [title, setTitle] = useState()
+  const [title, setTitle] = useState("")
   const [cancelled, setCancelled] = useState()
   const [savedEvents, dispatchCalEvent] = useReducer(
     savedEventsReducer,
@@ -102,7 +102,7 @@ export default function ContextWrapper(props) {
 
   function updateTitle(titles) {
     setTitle(
-      title.map((tle) => (tle.titles === tle.titles ? titles : tle))
+      title.map((tle) => console.log(tle))
     )
     console.log('titles', titles)
   }
