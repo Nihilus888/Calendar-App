@@ -2,7 +2,7 @@
 
 
 ## Project summary
-Calendar app to put all your events to organize your life and to organise if your meetings are confirmed or cancelled. You can write the event title, set your time and put the specific meeting room. 
+This is a calendar app to put all your events to organize your life and to organise if your meetings are confirmed or cancelled. You can write the event title, set your time and put the specific meeting room. 
 
 ## Project details
 This calendar app has full CRUD capabilities to create your meetings/events and you have the ability to filter your meetings. In addition, your confirmed meetings and cancelled meetings will appear at the side bar of your calendar.
@@ -19,7 +19,7 @@ I do admit that I'm not able to filter through based on the status, meeting room
 
 If I have more time as I was swarmed with finals, projects and assignments for me to give enough time to focus on this, I would have fixed the technical challenges that I have listed above and potentially used a database to store all the information that I needed instead of using local storage as it is not a very secure way of storing data. 
 
-The calendar is mobile responsive but if it is too small like on an IPhone SE, the grids will mash together and it will horrendous. 
+The calendar is mobile responsive but if it is too small like on an IPhone SE, the grids will mash together and it will look horrendous. 
 
 ## Sample photos
 ![Sample Calendar](public/Sample.jpg)
