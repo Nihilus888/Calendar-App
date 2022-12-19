@@ -102,7 +102,7 @@ export default function ContextWrapper(props) {
 
   function updateTitle(titles) {
     setTitle(
-      title.map((tle) => console.log(tle))
+      title.map((tle) => (tle.title === title.title ? title : ''))
     )
     console.log('titles', titles)
   }
