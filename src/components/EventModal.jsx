@@ -14,30 +14,23 @@ const labelsClasses = [
   "zinc",
 ];
 
-
 const meetings = [
-  'MR 6-1-1',
-  'MR 6-1-2',
-  'MR 6-1-3',
-  'DR 9-2-1',
-  'DR 9-2-3',
-  'DR 9-2-4',
-  'OCEANUS 6-1-4',
-  'PERSEUS',
-  'APOLLO',
-]
+  "MR 6-1-1",
+  "MR 6-1-2",
+  "MR 6-1-3",
+  "DR 9-2-1",
+  "DR 9-2-3",
+  "DR 9-2-4",
+  "OCEANUS 6-1-4",
+  "PERSEUS",
+  "APOLLO",
+];
 
 export default function EventModal() {
-  const {
-    setShowEventModal,
-    daySelected,
-    dispatchCalEvent,
-    selectedEvent,
-  } = useContext(GlobalContext);
+  const { setShowEventModal, daySelected, dispatchCalEvent, selectedEvent } =
+    useContext(GlobalContext);
 
-  const [title, setTitle] = useState(
-    selectedEvent ? selectedEvent.title : ""
-  );
+  const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");
   const [description, setDescription] = useState(
     selectedEvent ? selectedEvent.description : ""
   );
@@ -46,22 +39,22 @@ export default function EventModal() {
       ? labelsClasses.find((lbl) => lbl === selectedEvent.label)
       : labelsClasses[0]
   );
-  const [confirmed, setConfirmed] = useState(false)
+  const [confirmed, setConfirmed] = useState(false);
 
   function handleConfirmed(e) {
-    e.preventDefault()
+    e.preventDefault();
     toast.success("Meeting Confirmed!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    setConfirmed(true)
+    setConfirmed(true);
   }
 
   function handleCancelled(e) {
-    e.preventDefault()
+    e.preventDefault();
     toast.error("Meeting Cancelled!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    setConfirmed(false)
+    setConfirmed(false);
   }
 
   function handleSubmit(e) {
@@ -86,7 +79,7 @@ export default function EventModal() {
       window.location.reload(false);
     }, "1000");
   }
-  
+
   return (
     <div className="h-full w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/2">
@@ -98,6 +91,9 @@ export default function EventModal() {
             {selectedEvent && (
               <span
                 onClick={() => {
+                  setTimeout(() => {
+                    window.location.reload(false);
+                  }, "500");
                   dispatchCalEvent({
                     type: "delete",
                     payload: selectedEvent,
@@ -165,7 +161,7 @@ export default function EventModal() {
           </div>
         </div>
         <footer className="flex justify-end border-t p-3 mt-5">
-        <button
+          <button
             type="submit"
             onClick={handleConfirmed}
             className="bg-green-500 hover:bg-green-600 px-3 py-2 rounded text-white mr-3"
