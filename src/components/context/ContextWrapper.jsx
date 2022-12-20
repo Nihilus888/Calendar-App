@@ -7,9 +7,7 @@ function savedEventsReducer(state, { type, payload }) {
     case "push":
       return [...state, payload];
     case "update":
-      return state.map((evt) =>
-        evt.id === payload.id ? payload : evt
-      );
+      return state.map((evt) => (evt.id === payload.id ? payload : evt));
     case "delete":
       return state.filter((evt) => evt.id !== payload.id);
     default:
@@ -29,8 +27,8 @@ export default function ContextWrapper(props) {
   const [showEventModal, setShowEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [labels, setLabels] = useState([]);
-  const [title, setTitle] = useState("")
-  const [cancelled, setCancelled] = useState()
+  const [title, setTitle] = useState("");
+  const [cancelled, setCancelled] = useState();
   const [savedEvents, dispatchCalEvent] = useReducer(
     savedEventsReducer,
     [],
@@ -52,17 +50,13 @@ export default function ContextWrapper(props) {
 
   useEffect(() => {
     setLabels((prevLabels) => {
-      return [...new Set(savedEvents.map((evt) => evt.label))].map(
-        (label) => {
-          const currentLabel = prevLabels.find(
-            (lbl) => lbl.label === label
-          );
-          return {
-            label,
-            checked: currentLabel ? currentLabel.checked : true,
-          };
-        }
-      );
+      return [...new Set(savedEvents.map((evt) => evt.label))].map((label) => {
+        const currentLabel = prevLabels.find((lbl) => lbl.label === label);
+        return {
+          label,
+          checked: currentLabel ? currentLabel.checked : true,
+        };
+      });
     });
   }, [savedEvents]);
 
@@ -79,38 +73,33 @@ export default function ContextWrapper(props) {
   }, [showEventModal]);
 
   useEffect(() => {
-    let array = []
-    const meeting = JSON.parse(localStorage.getItem('savedEvents'))
-    for(let i = 0; i < meeting.length; i++) {
-      if(meeting[i].confirmed === true) {
-        array.push('Meeting title: ',  meeting[i].title, ' ')
+    let array = [];
+    const meeting = JSON.parse(localStorage.getItem("savedEvents"));
+    for (let i = 0; i < meeting.length; i++) {
+      if (meeting[i].confirmed === true) {
+        array.push("Meeting title: ", meeting[i].title, " ");
       }
     }
-    setTitle(array)
-  }, [])
+    setTitle(array);
+  }, []);
 
   useEffect(() => {
-    let array = []
-    const meeting = JSON.parse(localStorage.getItem('savedEvents'))
-    for(let i = 0; i < meeting.length; i++) {
-      if(meeting[i].confirmed === false) {
-        array.push('Meeting title: ', meeting[i].title, ' ')
+    let array = [];
+    const meeting = JSON.parse(localStorage.getItem("savedEvents"));
+    for (let i = 0; i < meeting.length; i++) {
+      if (meeting[i].confirmed === false) {
+        array.push("Meeting title: ", meeting[i].title, " ");
       }
     }
-    setCancelled(array)
-  }, [])
+    setCancelled(array);
+  }, []);
 
   function updateTitle(titles) {
-    setTitle(
-      title.map((tle) => (tle.title === title.title ? title : ''))
-    )
-    console.log('titles', titles)
+    setTitle(title.map((tle) => (tle.titles === title.titles ? title : "")));
   }
 
   function updateLabel(label) {
-    setLabels(
-      labels.map((lbl) => (lbl.label === label.label ? label : lbl))
-    );
+    setLabels(labels.map((lbl) => (lbl.label === label.label ? label : lbl)));
   }
 
   return (

@@ -14,6 +14,7 @@ const labelsClasses = [
   "zinc",
 ];
 
+
 const meetings = [
   'MR 6-1-1',
   'MR 6-1-2',
@@ -49,7 +50,6 @@ export default function EventModal() {
 
   function handleConfirmed(e) {
     e.preventDefault()
-    console.log('Testing confirmed button')
     toast.success("Meeting Confirmed!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -58,7 +58,6 @@ export default function EventModal() {
 
   function handleCancelled(e) {
     e.preventDefault()
-    console.log('Testing cancelled button')
     toast.error("Meeting Cancelled!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -82,7 +81,12 @@ export default function EventModal() {
     }
 
     setShowEventModal(false);
+
+    setTimeout(() => {
+      window.location.reload(false);
+    }, "1000");
   }
+  
   return (
     <div className="h-full w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/2">
