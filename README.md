@@ -12,10 +12,13 @@ This is mainly a front end application built using React JS and CSS Tailwind for
 
 I had to properly separate the different components into its various parts like the header, sidebar, the small calendar, the large calendar, the event description modal and the labels to filter the meeting rooms and to display the confirmed and cancelled meetings.
 
+
 ## Technical Challenges
 I had to utilise a few youtube tutorials, stack overflow and other online resourses and documentation to create the design for the grid calendar and for other necessary functions such as useContext, useEffect and other state management. I still have issues updating the confirmed meeting and cancelled meeting as I need to refresh the page for it to appear and issue with displaying the meeting room name instead of the colour. I tried to implement a hash table to put the keys as the colours and the values as the meeting room name but unforunately I cannot loop through the values of the hash table and display them. 
 
 I do admit that I'm not able to filter through based on the status, meeting rooms and room types due to time and space constraint on the UI and to include all of the data would make the calendar look too cluttered. 
+
+Deploying the application was a problem initially as there were a lot of npm modules and dependencies that were crashing the deployment so I had to clear up my dependencies and fix them manually as ```npm audit fix ``` and ```npm audit fix --force ``` did not fix the problem. 
 
 ## Future Improvements
 
@@ -44,4 +47,8 @@ npm start
 and enjoy!
 
 Would love to hear your feedback or additonal thoughts!
+
+## Deployment site
+
+https://calendar-application.netlify.app/
 
