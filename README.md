@@ -12,7 +12,7 @@ This is mainly a front end application built using React JS and CSS Tailwind for
 
 I had to properly separate the different components into its various parts like the header, sidebar, the small calendar, the large calendar, the event description modal and the labels to filter the meeting rooms and to display the confirmed and cancelled meetings.
 
-To display the proper labels, I had to implement a hash table to properly map the colours to the corresponding meeting rooms as looping through with an index will display the wrong meeting rooms with the colour. It took quite a while to debug this as creating the hash table class and using JSX to display it was not easy as most of the time it displayed undefined for some weird reason. 
+To display the proper labels, I had to implement a hash table to properly map the colours to the corresponding meeting rooms as looping through with an index will display the wrong meeting rooms with the colour. It took quite a while to debug this as creating the hash table class and using JSX to display it was not easy as most of the time it displayed undefined for some weird reason. Alternatively, I tried to use Javascript Object but it did not work so I resorted to using hash tables instead.
 
 
 ## Technical Challenges
@@ -26,7 +26,7 @@ Deploying the application was a problem initially as there were a lot of npm mod
 
 If I have more time as I was swarmed with finals, projects and assignments for me to give enough time to focus on this project, I would have fixed the technical challenges that I have listed above and potentially used a database to store all the information that I needed instead of using local storage as it is not a very secure way of storing data. 
 
-The calendar is mobile responsive but if it is too small like on an IPhone SE, the grids will mash together and it will look horrendous. 
+The calendar is mobile responsive but if it is too small like on an IPhone SE, the grids will mash together and it will look horrendous. I might reduce the size of the grids but in terms of a UI/UX perspective, the grid size is needed to store multiple events within the day without it overlapping into another grid or looking disproportionate to the other grids. 
 
 ## Sample photos
 ![Sample Calendar](public/Sample.jpg)
@@ -54,11 +54,13 @@ npm start
 
 and enjoy!
 
+There will always be some hidden bugs lying around so please do let me know!
+
 Would love to hear your feedback or additonal thoughts!
 
 ## Deployment site
 
-Hosted on the cloud using netlify.
+Alternatively, it is hosted on the cloud using netlify.
 
 https://calendar-application.netlify.app/
 
