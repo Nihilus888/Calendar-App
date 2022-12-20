@@ -32,6 +32,12 @@ The calendar is mobile responsive but if it is too small like on an IPhone SE, t
 ![Sample Calendar](public/Sample.jpg)
 
 ![Sample Event Modal](public/Event-Modal.jpg)
+
+
+## Navigation and tutorial
+
+Use the small calendar to choose your day and press the create button to your event on that particular day. You can type the time it takes for the meeting to last in the description box. Before you save the event, you can click on meeting confirmed or cancelled and you can come and update the status later if there are any changes. There is a trash button that displays when there are events data in the event modal and a close button if you want to exit it. 
+
 ## How to use on local machine
 
 Type this command into your command line:
