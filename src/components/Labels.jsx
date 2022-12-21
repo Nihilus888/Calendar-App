@@ -92,8 +92,6 @@ export default function Labels() {
   meeting.set("orange", "PERSEUS");
   meeting.set("zinc", "APOLLO");
 
-  let lbl = "Indigo"
-  console.log(meeting.get(lbl))
 
   return (
     <React.Fragment>
